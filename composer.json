@@ -13,7 +13,7 @@
     "require": {
     },
     "autoload": {
-        "psr-4": {"BlackBoxCode\\Pando\\ProductProviderBundle\\": ""}
+        "psr-4": {"BlackBoxCode\\Pando\\Bundle\\ProductProviderBundle\\": ""}
     },
     "repositories": [{
     }],
