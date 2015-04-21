@@ -11,12 +11,17 @@
     "keywords": ["pando product provider bundle"],
     "license": ["LGPL-3.0"],
     "require": {
+        "blackboxcode/pando-product-sale-bundle": "1.0.0"
     },
     "autoload": {
         "psr-4": {"BlackBoxCode\\Pando\\Bundle\\ProductProviderBundle\\": ""}
     },
-    "repositories": [{
-    }],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/BlackBoxRepo/PandoProductSaleBundle"
+        }
+    ],
     "extra": {
         "branch-alias": {
             "dev-master": "develop"
