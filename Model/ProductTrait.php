@@ -1,6 +1,7 @@
 <?php
 namespace BlackBoxCode\Pando\Bundle\ProductProviderBundle\Model;
 
+use BlackBoxCode\Pando\Bundle\ProductProviderBundle\Exception\Entity\LifeCycle\ZeroOrOneException;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -12,7 +13,44 @@ trait ProductTrait
      * @ORM\ManyToMany(targetEntity="ProductProvider", mappedBy="products")
      */
     private $providers;
-    
+
+
+    /**
+     * Checks if this Product belongs to more than one ProductProvider
+     * of the same type and throws an exception if it does
+     *
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     *
+     * @throws ZeroOrOneException
+     */
+    public function checkZeroOrOneProviderOfSameType()
+    {
+        $providerTypes = [];
+
+        $providerType = null;
+        $duplicate = false;
+        foreach ($this->getProviders() as $provider) {
+            $providerType = $provider->getType()->getName();
+            if (in_array($providerType, $providerTypes)) {
+                $duplicate = true;
+                break;
+            }
+
+            $providerTypes[] = $providerType;
+        }
+
+        if ($duplicate)
+        {
+            throw new ZeroOrOneException(
+                sprintf(
+                    'Product "%s" already belongs to a ProductProvider of type "%s"',
+                    $this->getName(),
+                    $providerType
+                )
+            );
+        }
+    }
     
     /**
      * {@inheritdoc}
