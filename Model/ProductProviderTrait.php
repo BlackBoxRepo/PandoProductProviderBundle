@@ -70,6 +70,14 @@ trait ProductProviderTrait
     /**
      * {@inheritdoc}
      */
+    public function getPathDescription()
+    {
+        return 'ProductProvider: ' . $this->getName();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getType()
     {
         return $this->type;
