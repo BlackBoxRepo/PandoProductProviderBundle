@@ -6,20 +6,19 @@
         {
             "name": "Black Box Code",
             "email": "contact@blackboxcode.com"
+        },
+        {
+            "name": "Christopher West",
+            "email": "9ninemind@gmail.com",
+            "role": "architect"
         }
     ],
     "keywords": ["pando product provider bundle"],
     "license": ["LGPL-3.0"],
     "require": {
-        "blackboxcode/pando-product-sale-bundle": "1.0.0"
+        "blackboxcode/pando-product-sale-bundle": "dev-master"
     },
     "autoload": {
         "psr-4": {"BlackBoxCode\\Pando\\Bundle\\ProductProviderBundle\\": ""}
-    },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/BlackBoxRepo/PandoProductSaleBundle"
-        }
-    ]
+    }
 }
