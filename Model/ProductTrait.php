@@ -5,6 +5,9 @@ use BlackBoxCode\Pando\Bundle\ProductProviderBundle\Exception\Entity\LifeCycle\Z
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * @ORM\HasLifecycleCallbacks
+ */
 trait ProductTrait
 {
     /**
