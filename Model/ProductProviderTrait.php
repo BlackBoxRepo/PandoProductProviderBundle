@@ -35,43 +35,6 @@ trait ProductProviderTrait
 
 
     /**
-     * Checks if all Products this ProductProvider is assigned to don't already
-     * have a provider with the same ProductProviderType and throws an exception
-     * if one or more do
-     *
-     * @ORM\PrePersist
-     * @ORM\PreUpdate
-     *
-     * @throws ZeroOrOneException
-     */
-    public function checkZeroOrOneProviderOfSameType()
-    {
-        $providerType = $this->getType();
-
-        $products = $this->getProducts()->filter(
-            function($product) use ($providerType) {
-                $providers = $product->getProviders()->filter(
-                    function($provider) use ($providerType) {
-                        return $provider->getType() == $providerType;
-                    }
-                );
-
-                return $providers->count() > 0;
-            }
-        );
-
-        if ($products->count() > 0) {
-            throw new ZeroOrOneException(
-                sprintf(
-                    'ProductProvider "%s" cannot belong to Products that already have a ProductProvider of type "%s"',
-                    $this->getName(),
-                    $providerType->getName()
-                )
-            );
-        }
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function getPathDescription()
@@ -114,6 +77,7 @@ trait ProductProviderTrait
     {
         if (is_null($this->products)) $this->products = new ArrayCollection();
         $this->products->add($product);
+        $product->addProvider($this);
 
         return $this;
     }
@@ -125,5 +89,19 @@ trait ProductProviderTrait
     {
         if (is_null($this->products)) $this->products = new ArrayCollection();
         $this->products->removeElement($product);
+        $product->removeProvider($this);
+    }
+
+    /**
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     *
+     * {@inheritdoc}
+     */
+    public function checkZeroOrOneProviderOfSameType()
+    {
+        foreach ($this->getProducts() as $product) {
+            $product->checkZeroOrOneProviderOfSameType();
+        }
     }
 }

@@ -19,6 +19,38 @@ trait ProductTrait
 
 
     /**
+     * {@inheritdoc}
+     */
+    public function getProviders()
+    {
+        if (is_null($this->providers)) $this->providers = new ArrayCollection();
+        
+        return $this->providers;
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function addProvider(ProductProviderInterface $provider)
+    {
+        if (is_null($this->providers)) $this->providers = new ArrayCollection();
+        $this->providers->add($provider);
+        $provider->addProduct($this);
+    
+        return $this;
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function removeProvider(ProductProviderInterface $provider)
+    {
+        if (is_null($this->providers)) $this->providers = new ArrayCollection();
+        $this->providers->removeElement($provider);
+        $provider->removeProduct($this);
+    }
+
+    /**
      * @ORM\PrePersist
      * @ORM\PreUpdate
      *
@@ -50,35 +82,5 @@ trait ProductTrait
                 )
             );
         }
-    }
-    
-    /**
-     * {@inheritdoc}
-     */
-    public function getProviders()
-    {
-        if (is_null($this->providers)) $this->providers = new ArrayCollection();
-        
-        return $this->providers;
-    }
-    
-    /**
-     * {@inheritdoc}
-     */
-    public function addProvider(ProductProviderInterface $provider)
-    {
-        if (is_null($this->providers)) $this->providers = new ArrayCollection();
-        $this->providers->add($provider);
-    
-        return $this;
-    }
-    
-    /**
-     * {@inheritdoc}
-     */
-    public function removeProvider(ProductProviderInterface $provider)
-    {
-        if (is_null($this->providers)) $this->providers = new ArrayCollection();
-        $this->providers->removeElement($provider);
     }
 }
