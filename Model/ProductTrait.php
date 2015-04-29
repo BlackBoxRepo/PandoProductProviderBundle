@@ -19,13 +19,10 @@ trait ProductTrait
 
 
     /**
-     * Checks if this Product belongs to more than one ProductProvider
-     * of the same type and throws an exception if it does
-     *
      * @ORM\PrePersist
      * @ORM\PreUpdate
      *
-     * @throws ZeroOrOneException
+     * {@inheritdoc}
      */
     public function checkZeroOrOneProviderOfSameType()
     {
@@ -34,8 +31,8 @@ trait ProductTrait
         $providerType = null;
         $duplicate = false;
         foreach ($this->getProviders() as $provider) {
-            $providerType = $provider->getType()->getName();
-            if (in_array($providerType, $providerTypes)) {
+            $providerType = $provider->getType();
+            if (in_array($providerType, $providerTypes, true)) {
                 $duplicate = true;
                 break;
             }
@@ -49,7 +46,7 @@ trait ProductTrait
                 sprintf(
                     'Product "%s" already belongs to a ProductProvider of type "%s"',
                     $this->getName(),
-                    $providerType
+                    $providerType->getName()
                 )
             );
         }
