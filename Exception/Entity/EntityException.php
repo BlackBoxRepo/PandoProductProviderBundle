@@ -1,7 +1,7 @@
 <?php
-namespace BlackBoxCode\Pando\Bundle\ProductProviderBundle\Exception\Entity;
+namespace BlackBoxCode\Pando\ProductProviderBundle\Exception\Entity;
 
-use BlackBoxCode\Pando\Bundle\ProductProviderBundle\Exception\ProductProviderBundleException;
+use BlackBoxCode\Pando\ProductProviderBundle\Exception\ProductProviderBundleException;
 
 class EntityException extends ProductProviderBundleException
 {

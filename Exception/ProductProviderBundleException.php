@@ -1,7 +1,7 @@
 <?php
-namespace BlackBoxCode\Pando\Bundle\ProductProviderBundle\Exception;
+namespace BlackBoxCode\Pando\ProductProviderBundle\Exception;
 
-use BlackBoxCode\Pando\Bundle\BaseBundle\Exception\BaseException;
+use BlackBoxCode\Pando\BaseBundle\Exception\BaseException;
 
 class ProductProviderBundleException extends BaseException
 {

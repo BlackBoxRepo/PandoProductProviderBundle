@@ -19,6 +19,6 @@
         "blackboxcode/pando-product-sale-bundle": "dev-master"
     },
     "autoload": {
-        "psr-4": {"BlackBoxCode\\Pando\\Bundle\\ProductProviderBundle\\": ""}
+        "psr-4": {"BlackBoxCode\\Pando\\ProductProviderBundle\\": ""}
     }
 }

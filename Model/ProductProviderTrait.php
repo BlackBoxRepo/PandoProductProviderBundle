@@ -1,8 +1,8 @@
 <?php
-namespace BlackBoxCode\Pando\Bundle\ProductProviderBundle\Model;
+namespace BlackBoxCode\Pando\ProductProviderBundle\Model;
 
-use BlackBoxCode\Pando\Bundle\BaseBundle\Model\TypeTrait;
-use BlackBoxCode\Pando\Bundle\ProductProviderBundle\Exception\Entity\LifeCycle\ZeroOrOneException;
+use BlackBoxCode\Pando\BaseBundle\Model\TypeTrait;
+use BlackBoxCode\Pando\ProductProviderBundle\Exception\Entity\LifeCycle\ZeroOrOneException;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 

@@ -1,10 +1,10 @@
 <?php
-namespace BlackBoxCode\Pando\Bundle\ProductProviderBundle\Model;
+namespace BlackBoxCode\Pando\ProductProviderBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use BlackBoxCode\Pando\Bundle\ProductProviderBundle\Exception\Entity\LifeCycle\ZeroOrOneException;
+use BlackBoxCode\Pando\ProductProviderBundle\Exception\Entity\LifeCycle\ZeroOrOneException;
 
-interface ProductInterface extends \BlackBoxCode\Pando\Bundle\ProductSaleBundle\Model\ProductInterface
+interface ProductInterface extends \BlackBoxCode\Pando\ProductSaleBundle\Model\ProductInterface
 {
     /**
      * @return ArrayCollection<ProviderInterface>

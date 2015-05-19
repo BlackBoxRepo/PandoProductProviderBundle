@@ -1,9 +1,9 @@
 <?php
-namespace BlackBoxCode\Pando\Bundle\ProductProviderBundle\Tests\Entity;
+namespace BlackBoxCode\Pando\ProductProviderBundle\Tests\Entity;
 
-use BlackBoxCode\Pando\Bundle\ProductProviderBundle\Model\ProductInterface;
-use BlackBoxCode\Pando\Bundle\ProductProviderBundle\Model\ProductProviderInterface;
-use BlackBoxCode\Pando\Bundle\ProductProviderBundle\Model\ProductProviderTypeInterface;
+use BlackBoxCode\Pando\ProductProviderBundle\Model\ProductInterface;
+use BlackBoxCode\Pando\ProductProviderBundle\Model\ProductProviderInterface;
+use BlackBoxCode\Pando\ProductProviderBundle\Model\ProductProviderTypeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class ProductTest extends \PHPUnit_Framework_TestCase
@@ -20,7 +20,7 @@ class ProductTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->mProduct = $this
-            ->getMockBuilder('BlackBoxCode\Pando\Bundle\ProductProviderBundle\Model\ProductTrait')
+            ->getMockBuilder('BlackBoxCode\Pando\ProductProviderBundle\Model\ProductTrait')
             ->setMethods([
                 'getProviders',
                 'getName'
@@ -28,8 +28,8 @@ class ProductTest extends \PHPUnit_Framework_TestCase
             ->getMockForTrait()
         ;
 
-        $this->mProductProvider = $this->getMock('BlackBoxCode\Pando\Bundle\ProductProviderBundle\Model\ProductProviderInterface');
-        $this->mProductProviderType = $this->getMock('BlackBoxCode\Pando\Bundle\ProductProviderBundle\Model\ProductProviderTypeInterface');
+        $this->mProductProvider = $this->getMock('BlackBoxCode\Pando\ProductProviderBundle\Model\ProductProviderInterface');
+        $this->mProductProviderType = $this->getMock('BlackBoxCode\Pando\ProductProviderBundle\Model\ProductProviderTypeInterface');
     }
 
     /**
@@ -65,7 +65,7 @@ class ProductTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException BlackBoxCode\Pando\Bundle\ProductProviderBundle\Exception\Entity\LifeCycle\ZeroOrOneException
+     * @expectedException BlackBoxCode\Pando\ProductProviderBundle\Exception\Entity\LifeCycle\ZeroOrOneException
      */
     public function checkZeroOrOneProviderOfSameType_hasMoreThanOne()
     {

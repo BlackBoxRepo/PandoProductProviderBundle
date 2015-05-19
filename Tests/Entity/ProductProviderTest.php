@@ -1,9 +1,9 @@
 <?php
-namespace BlackBoxCode\Pando\Bundle\ProductProviderBundle\Tests\Entity;
+namespace BlackBoxCode\Pando\ProductProviderBundle\Tests\Entity;
 
-use BlackBoxCode\Pando\Bundle\ProductProviderBundle\Model\ProductInterface;
-use BlackBoxCode\Pando\Bundle\ProductProviderBundle\Model\ProductProviderInterface;
-use BlackBoxCode\Pando\Bundle\ProductProviderBundle\Model\ProductProviderTypeInterface;
+use BlackBoxCode\Pando\ProductProviderBundle\Model\ProductInterface;
+use BlackBoxCode\Pando\ProductProviderBundle\Model\ProductProviderInterface;
+use BlackBoxCode\Pando\ProductProviderBundle\Model\ProductProviderTypeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class ProductProviderTest extends \PHPUnit_Framework_TestCase
@@ -17,14 +17,14 @@ class ProductProviderTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->mProductProvider = $this
-            ->getMockBuilder('BlackBoxCode\Pando\Bundle\ProductProviderBundle\Model\ProductProviderTrait')
+            ->getMockBuilder('BlackBoxCode\Pando\ProductProviderBundle\Model\ProductProviderTrait')
             ->setMethods([
                 'getProducts'
             ])
             ->getMockForTrait()
         ;
 
-        $this->mProduct = $this->getMock('BlackBoxCode\Pando\Bundle\ProductProviderBundle\Model\ProductInterface');
+        $this->mProduct = $this->getMock('BlackBoxCode\Pando\ProductProviderBundle\Model\ProductInterface');
     }
 
     /**
